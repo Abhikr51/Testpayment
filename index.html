@@ -353,7 +353,8 @@
                 </fieldset>
             </div>
             
-            <button id="paynow" type="submit">Pay Now</button>
+            <button onclick="sendResponse(true)" type="button">Pay Now</button>
+            <button onclick="sendResponse(false)" type="button">Cancel</button>
 
         </form>
         <br>
@@ -448,14 +449,19 @@
         
         form.onsubmit = e => {
             e.preventDefault();
-            document.getElementById('paynow').innerHTML = "Loading ..."
-            var data = "completed";
-            setTimeout(() => {
-                window.ReactNativeWebView.postMessage(JSON.stringify({ data: data }));
-            }, 2000)
+            // document.getElementById('paynow').innerHTML = "Loading ..."
+            
+            
+            
         }
     });
-
+    const sendResponse = (status) =>{
+        if(status){
+            window.ReactNativeWebView.postMessage(JSON.stringify({ data: 'success' }));
+        }else{
+            window.ReactNativeWebView.postMessage(JSON.stringify({ data: 'failed' }));
+        }
+    }
 
 
 </script>
