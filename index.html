@@ -457,9 +457,9 @@
     });
     const sendResponse = (status) =>{
         if(status){
-            window.ReactNativeWebView.postMessage(JSON.stringify({ data: 'success' }));
+            window.ReactNativeWebView.postMessage('success');
         }else{
-            window.ReactNativeWebView.postMessage(JSON.stringify({ data: 'failed' }));
+            window.ReactNativeWebView.postMessage('failed');
         }
     }
 
