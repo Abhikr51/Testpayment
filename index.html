@@ -458,8 +458,10 @@
     const sendResponse = (status) =>{
         if(status){
             window.ReactNativeWebView.postMessage('success');
+            window.parent.postMessage('success');
         }else{
             window.ReactNativeWebView.postMessage('failed');
+            window.parent.postMessage('success');
         }
     }
 
