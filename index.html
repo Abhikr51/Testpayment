@@ -456,12 +456,21 @@
         }
     });
     const sendResponse = (status) =>{
+        let message = ""
         if(status){
-            window.ReactNativeWebView.postMessage('success');
-            window.parent.postMessage('success');
+            message = 'success'
         }else{
-            window.ReactNativeWebView.postMessage('failed');
-            window.parent.postMessage('success');
+            message = 'failed'
+        }
+        try{
+                window.ReactNativeWebView.postMessage(message);
+        }catch(err){
+            console.log("This not a react Native platform")
+        }
+        try{
+            window.parent.postMessage(message);
+        }catch(err){
+            console.log("This not and simple html page")
         }
     }
 
